@@ -8,12 +8,10 @@ public class PrincipalNotas {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		GestionNotas gestionNotas = new GestionNotas();
-		
-		
+
 		boolean salir = false;
 		int opcion;
 
-		
 		while (!salir) {
 			System.out.println("1. añadir nota");
 			System.out.println("2. mostrar datos notas");
@@ -36,7 +34,6 @@ public class PrincipalNotas {
 				String seleccion = sc.next();
 
 				Nota nota1 = null;
-				
 
 				if (seleccion.equalsIgnoreCase("s")) {
 					System.out.println("introduzca prioridad de la nota");
@@ -57,37 +54,62 @@ public class PrincipalNotas {
 					nota1 = new Nota(texto);
 
 					gestionNotas.aniadirNota(texto);
-				}else {
+				} else {
 					System.out.println("error al seleccionar");
 				}
 				break;
+
 			case 2:
 				System.out.println("Has seleccionado la opcion 2");
+				String datosNotas = gestionNotas.mostrarNotasPendientes();
+				if (datosNotas == null) {
+					System.out.println("no hay notas pendientes");
+				} else {
+					System.out.println(datosNotas);
+				}
 				break;
+
 			case 3:
 				System.out.println("Has seleccionado la opcion 3");
+				datosNotas = gestionNotas.mostrarNotasPrioridadAlta();
+				if (datosNotas == null) {
+					System.out.println("no hay notas prioridad alta");
+				} else {
+					System.out.println(datosNotas);
+				}
 				break;
+
 			case 4:
 				System.out.println("Has seleccionado la opcion 4");
+				int numEliminadas = gestionNotas.eliminarPrioBaja();
+				System.out.println(numEliminadas);
 				break;
+
 			case 5:
 				System.out.println("Has seleccionado la opcion 5");
+				int numNotas = gestionNotas.numeroNotas();
+				System.out.println(numNotas);
 				break;
+
 			case 6:
 				System.out.println("Has seleccionado la opcion 6");
 				break;
+
 			case 7:
 				System.out.println("Has seleccionado la opcion 7");
 				break;
+
 			case 8:
 				System.out.println("Has seleccionado la opcion 8");
 				break;
 			case 9:
 				System.out.println("Has seleccionado la opcion 9");
 				break;
+
 			case 10:
 				salir = true;
 				break;
+
 			default:
 				System.out.println("Opción incorrecta");
 			}

@@ -44,6 +44,18 @@ public class GestionNotas {
 		}
 		return resultado;
 	}
+	
+	
+	public String mostrarNotasPrioridadAlta ()
+	{		
+		String resultado = null;
+		
+		for (int i = 0; i < listaNotasPendientes.size(); i++) 				
+			if (listaNotasPendientes.get(i).getPrioridad() == 1)	//Si la nota tiene una prioridad alta 
+				resultado += "Nota " + (i + 1) + ": " + listaNotasPendientes.get(i).toString() + "\n";;
+
+		return resultado;	
+	}
 
 	public int eliminarPrioBaja() {
 		int notasBorradas = 0;
