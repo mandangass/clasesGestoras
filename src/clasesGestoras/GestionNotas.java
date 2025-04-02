@@ -21,6 +21,15 @@ public class GestionNotas {
 			return false;
 		}
 	}
+	
+	public boolean aniadirNota(String texto, int prioridad) {
+		Nota nota1 = new Nota(prioridad, texto);
+		if (listaNotasPendientes.add(nota1)) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 
 	public String mostrarNotasPendientes() {
 		String resultado = null;
@@ -87,11 +96,19 @@ public class GestionNotas {
 		return encontrada;
 	}
 	
-//	public String mostrarNotasArchivadas() {
-//		String notaArchivada="";
-//		for (Nota nota : listaNotasArchivadas) {
-//			
-//		}
-//	}
+	
+	public boolean desarchivarNota(int id) {
+		boolean encontrada = false;
+		
+		for (int i = 0; i < listaNotasArchivadas.size(); i++) {
+			if(listaNotasArchivadas.get(i).getId()==id) {
+				listaNotasPendientes.add(listaNotasArchivadas.get(i));
+				listaNotasArchivadas.remove(i);
+				encontrada=true;
+			}
+		}
+		return encontrada;
+	}
+
 	
 }
